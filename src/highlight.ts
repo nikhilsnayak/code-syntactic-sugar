@@ -1,6 +1,6 @@
-import { generate } from "./generate.js";
-import { toHtml } from "./to-html.js";
-import { tokenize } from "./tokenize.js";
+import { generate } from "./generate";
+import { toHtml } from "./to-html";
+import { tokenize } from "./tokenize";
 
 export function highlight(code: string): string {
   const tokens = tokenize(code);

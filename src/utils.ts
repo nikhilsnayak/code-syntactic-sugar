@@ -1,4 +1,4 @@
-import { signs } from "./constants.js";
+import { signs } from "./constants";
 
 export function isSpaces(str: string) {
   return /^[^\S\r\n]+$/g.test(str);

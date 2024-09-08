@@ -1,4 +1,4 @@
-import type { types } from "./constants.js";
+import type { types } from "./constants";
 
 export type Token = [number, string];
 

@@ -1,5 +1,5 @@
-import type { Line } from "./types.js";
-import { encode } from "./utils.js";
+import type { Line } from "./types";
+import { encode } from "./utils";
 
 export function toHtml(lines: Line[]) {
   return lines

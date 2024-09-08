@@ -1,5 +1,5 @@
-import { T_BREAK, types } from "./constants.js";
-import type { Children, Line, Token } from "./types.js";
+import { T_BREAK, types } from "./constants";
+import type { Children, Line, Token } from "./types";
 
 export function generate(tokens: Array<Token>): Line[] {
   const lines: Line[] = [];

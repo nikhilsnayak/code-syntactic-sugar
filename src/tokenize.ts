@@ -11,7 +11,7 @@ import {
   isStrTemplateChr,
   isStringQuotation,
   isWord,
-} from "./utils.js";
+} from "./utils";
 
 import {
   T_BREAK,
@@ -28,9 +28,9 @@ import {
   jsxBrackets,
   keywords,
   signs,
-} from "./constants.js";
+} from "./constants";
 
-import type { Token } from "./types.js";
+import type { Token } from "./types";
 
 export function tokenize(code: string): Token[] {
   let current = "";
