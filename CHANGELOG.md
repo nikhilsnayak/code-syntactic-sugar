@@ -1,5 +1,11 @@
 # code-syntactic-sugar
 
+## 1.1.1
+
+### Patch Changes
+
+- a274a76: migrate to tsup
+
 ## 1.1.0
 
 ### Minor Changes
