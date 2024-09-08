@@ -1,5 +1,11 @@
 # code-syntactic-sugar
 
+## 1.0.1
+
+### Patch Changes
+
+- d3c763a: fixes exports
+
 ## 1.0.0
 
 ### Major Changes
