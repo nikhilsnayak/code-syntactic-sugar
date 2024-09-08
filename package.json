@@ -20,18 +20,30 @@
     "dist"
   ],
   "main": "dist/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
+  },
   "scripts": {
     "dev": "vitest",
-    "build": "tsc",
-    "check": "biome check --write src",
+    "build": "tsup",
+    "check": "biome check src",
+    "check:write": "biome check --write src",
     "test": "vitest run",
-    "ci": "pnpm run build && pnpm run check && pnpm run test",
+    "check-exports": "attw --pack .",
+    "check-types": "tsc",
+    "ci": "pnpm run build  && pnpm run check-exports && pnpm run check-types && pnpm run check && pnpm run test",
     "local-release": "changeset version && changeset publish",
     "prepublishOnly": "pnpm run ci"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.16.1",
     "@biomejs/biome": "1.8.3",
     "@changesets/cli": "^2.27.8",
+    "tsup": "^8.2.4",
     "typescript": "^5",
     "vitest": "^2"
   },

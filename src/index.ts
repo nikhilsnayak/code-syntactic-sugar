@@ -1,8 +1,8 @@
-import { types } from "./constants.js";
+import { types } from "./constants";
 
 export const CodeSyntacticSugar = {
-	TokenTypes: types,
-	TokenMap: new Map(types.map((type, i) => [type, i])),
+  TokenTypes: types,
+  TokenMap: new Map(types.map((type, i) => [type, i])),
 } as const;
 
 export * from "./tokenize.js";
