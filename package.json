@@ -1,7 +1,7 @@
 {
   "name": "code-syntactic-sugar",
   "version": "1.0.0",
-  "description": "Fork of sugar-high package with extra features such as line highlighting",
+  "description": "This is a fork of the [sugar-high](https://github.com/huozhi/sugar-high) package with extra features.",
   "keywords": [
     "syntax-highlighting"
   ],
@@ -19,12 +19,7 @@
   "files": [
     "dist"
   ],
-  "types": "./dist/index.d.ts",
-  "exports": {
-    "./package.json": "./package.json",
-    "types": "./dist/index.d.ts",
-    "default": "./dist/index.js"
-  },
+  "main": "dist/index.js",
   "scripts": {
     "dev": "vitest",
     "build": "tsc",
