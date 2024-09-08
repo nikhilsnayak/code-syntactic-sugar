@@ -23,7 +23,8 @@
   "scripts": {
     "dev": "vitest",
     "build": "tsc",
-    "check": "biome check --write src",
+    "check": "biome check src",
+    "check:write": "biome check --write src",
     "test": "vitest run",
     "ci": "pnpm run build && pnpm run check && pnpm run test",
     "local-release": "changeset version && changeset publish",

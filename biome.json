@@ -11,5 +11,9 @@
         "noUnusedTemplateLiteral": "off"
       }
     }
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space"
   }
 }
