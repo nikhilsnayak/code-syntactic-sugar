@@ -1,5 +1,13 @@
 # code-syntactic-sugar
 
+## 1.2.0
+
+### Minor Changes
+
+- 0fc34b7: Add support for Line Modifiers
+
+  Currently Line Highlight is implemented
+
 ## 1.1.1
 
 ### Patch Changes
