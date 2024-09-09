@@ -115,3 +115,5 @@ export const [
   T_BREAK,
   T_SPACE,
 ] = types.map((_, i) => i);
+
+export const modifiers = ["highlighted"] as const;

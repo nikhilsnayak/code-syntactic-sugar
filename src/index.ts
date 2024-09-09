@@ -5,7 +5,7 @@ export const CodeSyntacticSugar = {
   TokenMap: new Map(types.map((type, i) => [type, i])),
 } as const;
 
-export * from "./tokenize.js";
-export * from "./generate.js";
-export * from "./to-html.js";
-export * from "./highlight.js";
+export * from "./tokenize";
+export * from "./generate";
+export * from "./to-html";
+export * from "./highlight";

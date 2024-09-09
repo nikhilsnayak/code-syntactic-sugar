@@ -28,11 +28,11 @@
     }
   },
   "scripts": {
-    "dev": "vitest",
+    "dev": "vitest src/__tests__",
     "build": "tsup",
     "check": "biome check src",
     "check:write": "biome check --write src",
-    "test": "vitest run",
+    "test": "vitest run src/__tests__",
     "check-exports": "attw --pack .",
     "check-types": "tsc",
     "ci": "pnpm run build  && pnpm run check-exports && pnpm run check-types && pnpm run check && pnpm run test",

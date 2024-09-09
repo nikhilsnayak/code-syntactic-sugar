@@ -1,4 +1,4 @@
-import type { types } from "./constants";
+import type { modifiers, types } from "./constants";
 
 export type Token = [number, string];
 
@@ -28,4 +28,21 @@ export type Line = {
   properties: {
     className: "css__line";
   };
+};
+
+export type Modifier = `${(typeof modifiers)[number]}-line`;
+export type Modifiers = [Modifier, ...Modifier[]];
+
+export type LineNumbers = [number, ...number[]];
+
+export type LineWithModifiers = Line & {
+  modifiers?: Modifiers;
+};
+
+export type ModifierInputMap = Partial<
+  Record<`${(typeof modifiers)[number]}Lines`, LineNumbers>
+>;
+
+export type CodeSyntacticSugarConfig = {
+  modifiers?: ModifierInputMap;
 };
