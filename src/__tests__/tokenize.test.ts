@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { CodeSyntacticSugar } from "./index";
-import { tokenize } from "./tokenize";
-import type { Token } from "./types";
+import { CodeSyntacticSugar } from "../index";
+import { tokenize } from "../tokenize";
+import type { Token } from "../types";
 
 function getTypeName(token: Token) {
   return CodeSyntacticSugar.TokenTypes[token[0]];

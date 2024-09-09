@@ -1,7 +1,7 @@
-import type { Line } from "./types";
+import type { LineWithModifiers } from "./types";
 import { encode } from "./utils";
 
-export function toHtml(lines: Line[]) {
+export function toHtml(lines: LineWithModifiers[]) {
   return lines
     .map((line) => {
       const { tagName: lineTag } = line;
@@ -13,7 +13,14 @@ export function toHtml(lines: Line[]) {
           }">${encode(children[0].value)}</${tagName}>`;
         })
         .join("");
-      return `<${lineTag} class="${line.properties.className}">${tokens}</${lineTag}>`;
+
+      const dataAttrs =
+        line.modifiers
+          ?.map((modifier) => `data-${modifier}`)
+          ?.join(" ")
+          ?.trim() ?? "";
+
+      return `<${lineTag} class="${line.properties.className}" ${dataAttrs} >${tokens}</${lineTag}>`;
     })
     .join("\n");
 }
