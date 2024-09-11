@@ -97,7 +97,7 @@ You can add visual modifiers to lines of code. Available modifiers include:
 
 - highlighted
 - added
-- deleted
+- removed
 
 The highlight function accepts an optional configuration object of type `CodeSyntacticSugarConfig`. You can pass a modifiers object specifying the modifier and corresponding lines.
 
@@ -105,7 +105,7 @@ If multiple modifiers has the same line, the priority is as follows:
 
 1. highlighted
 1. added
-1. deleted
+1. removed
 
 If the line number is out of bounds, then it will be ignored.
 
@@ -144,7 +144,7 @@ Here’s how to customize lines with different modifiers using CSS:
   background-color: #00FF00;
 }
 
-.css_line[data-deleted-line] {
+.css_line[data-removed-line] {
   background-color: #FF0000;
 }
 ```
