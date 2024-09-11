@@ -1,5 +1,11 @@
 # code-syntactic-sugar
 
+## 1.3.0
+
+### Minor Changes
+
+- dc8a9cd: implement added and removed line modifiers and export the types
+
 ## 1.2.0
 
 ### Minor Changes
