@@ -26,7 +26,12 @@ export function addLineModifiers(
     const lineNumber = index + 1;
     if (modifierInputMap.highlightedLines?.includes(lineNumber)) {
       appendModifier("highlighted-line");
+    } else if (modifierInputMap.addedLines?.includes(lineNumber)) {
+      appendModifier("added-line");
+    } else if (modifierInputMap.removedLines?.includes(lineNumber)) {
+      appendModifier("removed-line");
     }
+
     return {
       ...line,
       ...(modifiers !== null && { modifiers }),
