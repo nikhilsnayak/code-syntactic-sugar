@@ -116,4 +116,4 @@ export const [
   T_SPACE,
 ] = types.map((_, i) => i);
 
-export const modifiers = ["highlighted"] as const;
+export const modifiers = ["highlighted", "added", "removed"] as const;
