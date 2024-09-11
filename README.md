@@ -26,10 +26,6 @@ const codeHTML = highlight(code);
 document.querySelector('pre > code').innerHTML = codeHTML;
 ```
 
-### Additional Features
-
-- More features to be added soon!
-
 ### Customizing Highlighting with CSS
 
 Create your own theme by customizing colors for different token types. Add the following CSS to your global stylesheet. The class names start with the `--css-` (code-syntactic-sugar) prefix.
@@ -88,6 +84,68 @@ Customize the styling of each token by using the `.css__token--<token type>` cla
 ```css
 .css__token--keyword {
   background: #f47067;
+}
+```
+
+### Additional Features
+
+Code Syntactic Sugar provides additional features that are not available in the original sugar-high package.
+
+#### Line Modifiers
+
+You can add visual modifiers to lines of code. Available modifiers include:
+
+- highlighted
+- added
+- deleted
+
+The highlight function accepts an optional configuration object of type `CodeSyntacticSugarConfig`. You can pass a modifiers object specifying the modifier and corresponding lines.
+
+If multiple modifiers has the same line, the priority is as follows:
+
+1. highlighted
+1. added
+1. deleted
+
+If the line number is out of bounds, then it will be ignored.
+
+##### Example:
+
+```js
+import { highlight } from 'code-syntactic-sugar';
+
+const code = `
+  let a = 1;
+  let b = 10;
+  const result = a + b;
+  console.log(a);
+  console.log(b);
+  console.log(result);
+`
+const codeHTML = highlight(code, {
+  modifiers: {
+    highlightedLines: [1, 2],
+    addedLines: [4, 5],
+    removedLines: [3, 0, -1, 10, 4],
+  },
+});
+
+document.querySelector('pre > code').innerHTML = codeHTML;
+```
+
+Here’s how to customize lines with different modifiers using CSS:
+
+```css
+.css_line[data-highlighted-line] {
+  background-color: #FEFEFE;
+}
+
+.css_line[data-added-line] {
+  background-color: #00FF00;
+}
+
+.css_line[data-deleted-line] {
+  background-color: #FF0000;
 }
 ```
 
