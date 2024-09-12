@@ -1,6 +1,6 @@
 {
   "name": "code-syntactic-sugar",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "This is a fork of the [sugar-high](https://github.com/huozhi/sugar-high) package with extra features.",
   "keywords": [
     "syntax-highlighting"

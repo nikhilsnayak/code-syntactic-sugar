@@ -1,5 +1,11 @@
 # code-syntactic-sugar
 
+## 1.3.2
+
+### Patch Changes
+
+- 051957f: fix style prop for react output mode
+
 ## 1.3.1
 
 ### Patch Changes
