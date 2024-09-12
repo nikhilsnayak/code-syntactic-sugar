@@ -1,5 +1,11 @@
 # code-syntactic-sugar
 
+## 1.3.3
+
+### Patch Changes
+
+- c2ad175: pass outputMode flag to generate func
+
 ## 1.3.2
 
 ### Patch Changes
