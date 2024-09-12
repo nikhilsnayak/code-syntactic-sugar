@@ -1,26 +1,28 @@
-import type { ReactElement } from "react";
+import type { CSSProperties, ReactElement } from "react";
 import type { modifiers, types } from "./constants";
 
 export type Token = [number, string];
 
-export type Children = Readonly<
-  {
-    type: "element";
-    tagName: "span";
-    children: Readonly<
-      [
-        {
-          type: "text";
-          value: string;
-        },
-      ]
-    >;
-    properties: Readonly<{
-      className: `css__token--${(typeof types)[number]}`;
-      style: `color: var(--css-${(typeof types)[number]})`;
-    }>;
-  }[]
->;
+export type TokenType = (typeof types)[number];
+
+export type Child = {
+  type: "element";
+  tagName: "span";
+  children: Readonly<
+    [
+      {
+        type: "text";
+        value: string;
+      },
+    ]
+  >;
+  properties: Readonly<{
+    className: `css__token--${TokenType}`;
+    style: `color: var(--css-${TokenType})` | CSSProperties;
+  }>;
+};
+
+export type Children = Readonly<Child[]>;
 
 export type Line = {
   type: "element";
@@ -55,6 +57,6 @@ export type HighlightedOutput<T extends OutputMode> = T extends "html-string"
 export type CodeSyntacticSugarConfig<T extends OutputMode> = {
   modifiers?: ModifierInputMap;
   experimental?: {
-    outputMode: T;
+    outputMode?: T;
   };
 };

@@ -1,7 +1,10 @@
 import { T_BREAK, types } from "./constants";
-import type { Children, Line, Token } from "./types";
+import type { Children, Line, OutputMode, Token, TokenType } from "./types";
 
-export function generate(tokens: Array<Token>): Line[] {
+export function generate(
+  tokens: Array<Token>,
+  outputMode: OutputMode = "html-string",
+): Line[] {
   const lines: Line[] = [];
 
   const createLine = (children: Children) =>
@@ -16,24 +19,36 @@ export function generate(tokens: Array<Token>): Line[] {
       },
     }) as const;
 
+  const getStyle = (token: TokenType) => {
+    switch (outputMode) {
+      case "html-string":
+        return `color: var(--css-${token})` as const;
+      case "react-element":
+        return {
+          color: `var(--css-${token})`,
+        } as const;
+      default:
+        throw Error("This should not happen. There is a bug in CSS");
+    }
+  };
+
   function flushLine(tokens: Array<Token>): void {
-    const lineTokens = tokens.map(
-      ([type, value]) =>
-        ({
-          type: "element",
-          tagName: "span",
-          children: [
-            {
-              type: "text",
-              value: value, // to encode
-            },
-          ],
-          properties: {
-            className: `css__token--${types[type]}`,
-            style: `color: var(--css-${types[type]})`,
+    const lineTokens = tokens.map(([type, value]) => {
+      return {
+        type: "element",
+        tagName: "span",
+        children: [
+          {
+            type: "text",
+            value: value, // to encode
           },
-        }) as const,
-    );
+        ],
+        properties: {
+          className: `css__token--${types[type]}`,
+          style: getStyle(types[type]),
+        },
+      } as const;
+    });
     lines.push(createLine(lineTokens));
   }
 
