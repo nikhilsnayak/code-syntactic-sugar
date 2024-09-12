@@ -15,16 +15,21 @@
     "url": "https://github.com/nikhilsnayak/code-syntactic-sugar"
   },
   "license": "MIT",
-  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
+  "type": "module",
+  "sideEffects": false,
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "import": "./dist/index.js",
-      "default": "./dist/index.cjs"
+      "require": "./dist/index.cjs"
     }
   },
   "scripts": {
@@ -43,9 +48,22 @@
     "@arethetypeswrong/cli": "^0.16.1",
     "@biomejs/biome": "1.8.3",
     "@changesets/cli": "^2.27.8",
+    "@types/react": "^18.3.5",
+    "react": "^18.3.1",
     "tsup": "^8.2.4",
     "typescript": "^5",
     "vitest": "^2"
   },
-  "packageManager": "pnpm@9.9.0"
+  "peerDependencies": {
+    "react": "^18 || ^19"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@9.10.0"
 }
