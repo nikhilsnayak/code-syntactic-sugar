@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import type { modifiers, types } from "./constants";
 
 export type Token = [number, string];
@@ -43,6 +44,17 @@ export type ModifierInputMap = Partial<
   Record<`${(typeof modifiers)[number]}Lines`, LineNumbers>
 >;
 
-export type CodeSyntacticSugarConfig = {
+export type OutputMode = "html-string" | "react-element";
+
+export type HighlightedOutput<T extends OutputMode> = T extends "html-string"
+  ? string
+  : T extends "react-element"
+    ? ReactElement
+    : never;
+
+export type CodeSyntacticSugarConfig<T extends OutputMode> = {
   modifiers?: ModifierInputMap;
+  experimental?: {
+    outputMode: T;
+  };
 };
