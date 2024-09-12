@@ -1,5 +1,11 @@
 # code-syntactic-sugar
 
+## 1.3.1
+
+### Patch Changes
+
+- b798f44: introduce experimental outputMode and add support for react element
+
 ## 1.3.0
 
 ### Minor Changes
