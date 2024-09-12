@@ -14,7 +14,7 @@ export function highlight<T extends OutputMode>(
   config?: CodeSyntacticSugarConfig<T>,
 ): HighlightedOutput<T> {
   const tokens = tokenize(code);
-  const lines = generate(tokens);
+  const lines = generate(tokens, config?.experimental?.outputMode);
   const linesWithModifiers = addLineModifiers(lines, config?.modifiers);
 
   if (!config?.experimental?.outputMode) {
