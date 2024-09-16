@@ -1,6 +1,5 @@
 import { Fragment, createElement } from "react";
 import type { LineWithModifiers } from "./types";
-import { encode } from "./utils";
 
 export function toReactElement(lines: LineWithModifiers[]) {
   const lineElements = lines.map((line) => {
@@ -10,11 +9,7 @@ export function toReactElement(lines: LineWithModifiers[]) {
         children,
         properties: { className, style },
       } = child;
-      return createElement(
-        tagName,
-        { className, style },
-        encode(children[0].value),
-      );
+      return createElement(tagName, { className, style }, children[0].value);
     });
 
     const dataAttrs = line.modifiers
@@ -29,10 +24,16 @@ export function toReactElement(lines: LineWithModifiers[]) {
       );
 
     return createElement(
-      line.tagName,
-      { className: line.properties.className, ...dataAttrs },
-      ...tokens,
+      Fragment,
+      null,
+      createElement(
+        line.tagName,
+        { className: line.properties.className, ...dataAttrs },
+        ...tokens,
+      ),
+      "\n",
     );
   });
+
   return createElement(Fragment, null, ...lineElements);
 }
