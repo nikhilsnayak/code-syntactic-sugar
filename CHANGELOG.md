@@ -1,5 +1,11 @@
 # code-syntactic-sugar
 
+## 1.3.4
+
+### Patch Changes
+
+- 2ff86cb: fix react element output
+
 ## 1.3.3
 
 ### Patch Changes
