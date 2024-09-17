@@ -1,5 +1,13 @@
 # code-syntactic-sugar
 
+## 2.0.0-beta.0
+
+### Major Changes
+
+- a25306e: Version to react element output mode
+
+  ssssssssssssssssssssssssssssssssssssssssss
+
 ## 1.3.4
 
 ### Patch Changes
