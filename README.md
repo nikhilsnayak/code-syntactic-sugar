@@ -2,7 +2,7 @@
 
 ### Introduction
 
-This is a fork of the [sugar-high](https://github.com/huozhi/sugar-high) package with extra features.
+This package is a fork of [sugar-high](https://github.com/huozhi/sugar-high) with added features. It is specifically designed for React, producing React elements as output. This eliminates the need to use `dangerouslySetInnerHTML`. Please note, React must be installed for this package to work.
 
 Special thanks to [Jiachi Liu](https://github.com/huozhi), the original author of [sugar-high](https://github.com/huozhi/sugar-high).
 
@@ -10,25 +10,35 @@ Special thanks to [Jiachi Liu](https://github.com/huozhi), the original author o
 
 To install the package, run:
 
-```sh
+```bash
 npm install --save code-syntactic-sugar
 ```
 
 ### Basic Usage
 
-To use Code Syntactic Sugar:
-
-```js
+```jsx
 import { highlight } from 'code-syntactic-sugar';
+import { createRoot } from 'react-dom/client';
 
-const codeHTML = highlight(code);
+function CodeBlock() {
+  const code = `
+  const a = 10;
+  const b = 20;
+  console.log(a + b);
+  `.trim();
 
-document.querySelector('pre > code').innerHTML = codeHTML;
+  const codeLines = highlight(code);
+
+  return <code>{codeLines}</code>;
+}
+
+const root = createRoot(document.querySelector('#app > pre'));
+root.render(<CodeBlock />);
 ```
 
 ### Customizing Highlighting with CSS
 
-Create your own theme by customizing colors for different token types. Add the following CSS to your global stylesheet. The class names start with the `--css-` (code-syntactic-sugar) prefix.
+You can create custom themes by modifying colors for different token types. Add the following CSS to your global stylesheet. All class names use the `--css-` prefix for `code-syntactic-sugar`.
 
 ```css
 /**
@@ -61,7 +71,7 @@ Create your own theme by customizing colors for different token types. Add the f
 
 ### Line Numbers
 
-The `.css_line` class name is provided for each line. To display line numbers, use the following CSS:
+To display line numbers, use the `.css_line` class and the following CSS:
 
 ```css
 pre code {
@@ -69,7 +79,7 @@ pre code {
 }
 
 .css_line::before {
-  counter-increment: css-line-number 1;
+  counter-increment: css-line-number;
   content: counter(css-line-number);
   margin-right: 24px;
   text-align: right;
@@ -79,7 +89,7 @@ pre code {
 
 ### CSS Class Names
 
-Customize the styling of each token by using the `.css__token--<token type>` class names:
+Customize the appearance of tokens using the `.css__token--<token-type>` class names. For example, to style keywords:
 
 ```css
 .css__token--keyword {
@@ -89,63 +99,68 @@ Customize the styling of each token by using the `.css__token--<token type>` cla
 
 ### Additional Features
 
-Code Syntactic Sugar provides additional features that are not available in the original sugar-high package.
+Code Syntactic Sugar includes several additional features that are not available in the original sugar-high package.
 
 #### Line Modifiers
 
-You can add visual modifiers to lines of code. Available modifiers include:
+You can apply visual modifiers to specific lines of code. The available modifiers are:
 
-- highlighted
-- added
-- removed
+- **highlighted**
+- **added**
+- **removed**
 
-The highlight function accepts an optional configuration object of type `CodeSyntacticSugarConfig`. You can pass a modifiers object specifying the modifier and corresponding lines.
-
-If multiple modifiers has the same line, the priority is as follows:
+The `highlight` function accepts an optional configuration object of type `CodeSyntacticSugarConfig`. You can use the `modifiers` object to specify which lines to modify. If multiple modifiers are applied to the same line, the order of precedence is:
 
 1. highlighted
-1. added
-1. removed
+2. added
+3. removed
 
-If the line number is out of bounds, then it will be ignored.
+Any line numbers that are out of bounds will be ignored.
 
 ##### Example:
 
-```js
+```jsx
 import { highlight } from 'code-syntactic-sugar';
+import { createRoot } from 'react-dom/client';
 
-const code = `
-  let a = 1;
-  let b = 10;
-  const result = a + b;
-  console.log(a);
-  console.log(b);
-  console.log(result);
-`
-const codeHTML = highlight(code, {
-  modifiers: {
-    highlightedLines: [1, 2],
-    addedLines: [4, 5],
-    removedLines: [3, 0, -1, 10, 4],
-  },
-});
+function CodeBlock() {
+  const code = `
+    let a = 1;
+    let b = 10;
+    const result = a + b;
+    console.log(a);
+    console.log(b);
+    console.log(result);
+  `.trim();
 
-document.querySelector('pre > code').innerHTML = codeHTML;
+  const codeLines = highlight(code, {
+    modifiers: {
+      highlightedLines: [1, 2],
+      addedLines: [4, 5],
+      removedLines: [3, 0, -1, 10, 4],
+    },
+  });
+
+  return <code>{codeLines}</code>;
+}
+
+const root = createRoot(document.querySelector('#app > pre'));
+root.render(<CodeBlock />);
 ```
 
-Here’s how to customize lines with different modifiers using CSS:
+To style lines with different modifiers, add the following CSS:
 
 ```css
 .css_line[data-highlighted-line] {
-  background-color: #FEFEFE;
+  background-color: #fefefe;
 }
 
 .css_line[data-added-line] {
-  background-color: #00FF00;
+  background-color: #00ff00;
 }
 
 .css_line[data-removed-line] {
-  background-color: #FF0000;
+  background-color: #ff0000;
 }
 ```
 

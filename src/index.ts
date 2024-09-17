@@ -9,5 +9,4 @@ export const CodeSyntacticSugar = {
 export * from "./types";
 export * from "./tokenize";
 export * from "./generate";
-export * from "./to-html";
 export * from "./highlight";

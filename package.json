@@ -1,9 +1,11 @@
 {
   "name": "code-syntactic-sugar",
   "version": "1.3.4",
-  "description": "This is a fork of the [sugar-high](https://github.com/huozhi/sugar-high) package with extra features.",
+  "description": "A fork of sugar-high package with extra features for use with React.",
   "keywords": [
-    "syntax-highlighting"
+    "syntax-highlighting",
+    "react",
+    "code-highlighting"
   ],
   "homepage": "https://github.com/nikhilsnayak/code-syntactic-sugar#readme",
   "bugs": {
@@ -23,24 +25,17 @@
   ],
   "type": "module",
   "sideEffects": false,
-  "main": "dist/index.cjs",
   "module": "dist/index.js",
-  "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
+  "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "vitest src/__tests__",
+    "dev": "vitest",
     "build": "tsup",
     "check": "biome check src",
     "check:write": "biome check --write src",
-    "test": "vitest run src/__tests__",
-    "check-exports": "attw --pack .",
+    "test": "vitest run",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
     "check-types": "tsc",
-    "ci": "pnpm run build  && pnpm run check-exports && pnpm run check-types && pnpm run check && pnpm run test",
+    "ci": "pnpm run build && pnpm run check-exports && pnpm run check-types && pnpm run check && pnpm run test",
     "local-release": "changeset version && changeset publish",
     "prepublishOnly": "pnpm run ci"
   },
@@ -56,11 +51,6 @@
   },
   "peerDependencies": {
     "react": "^18 || ^19"
-  },
-  "peerDependenciesMeta": {
-    "react": {
-      "optional": true
-    }
   },
   "engines": {
     "node": ">=18"
