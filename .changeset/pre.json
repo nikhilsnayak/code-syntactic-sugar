@@ -1,0 +1,10 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "code-syntactic-sugar": "1.3.4"
+  },
+  "changesets": [
+    "lazy-carrots-act"
+  ]
+}
