@@ -1,0 +1,25 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "dev": {
+      "persistent": true,
+      "cache": false
+    },
+    "build": {
+      "outputs": ["dist/"]
+    },
+    "format-and-lint": {
+      "inputs": ["src**/*.ts"]
+    },
+    "format-and-lint:fix": {
+      "inputs": ["src**/*.ts"],
+      "cache": false
+    },
+    "test": {
+      "inputs": ["src**/*.ts"]
+    },
+    "check-types": {
+      "inputs": ["src**/*.ts"]
+    }
+  }
+}
