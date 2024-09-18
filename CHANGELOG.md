@@ -1,5 +1,11 @@
 # code-syntactic-sugar
 
+## 2.0.0-beta.1
+
+### Patch Changes
+
+- 195fd27: add turbo and fix types
+
 ## 2.0.0-beta.0
 
 ### Major Changes
