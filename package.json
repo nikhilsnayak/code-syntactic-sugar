@@ -30,22 +30,21 @@
   "scripts": {
     "dev": "vitest",
     "build": "tsup",
-    "check": "biome check src",
-    "check:write": "biome check --write src",
+    "format-and-lint": "biome check src",
+    "format-and-lint:fix": "biome check --write src",
     "test": "vitest run",
-    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
     "check-types": "tsc",
-    "ci": "pnpm run build && pnpm run check-exports && pnpm run check-types && pnpm run check && pnpm run test",
+    "ci": "turbo run build check-types format-and-lint test",
     "local-release": "changeset version && changeset publish",
     "prepublishOnly": "pnpm run ci"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.16.1",
     "@biomejs/biome": "1.8.3",
     "@changesets/cli": "^2.27.8",
     "@types/react": "^18.3.5",
     "react": "^18.3.1",
     "tsup": "^8.2.4",
+    "turbo": "^2.1.2",
     "typescript": "^5",
     "vitest": "^2"
   },
