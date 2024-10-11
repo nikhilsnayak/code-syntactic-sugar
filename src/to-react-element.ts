@@ -31,7 +31,7 @@ export function toReactElement(lines: LineWithModifiers[]) {
         { className: line.properties.className, ...dataAttrs },
         ...tokens,
       ),
-      "\n",
+      lines.length > 1 ? "\n" : null,
     );
   });
 
