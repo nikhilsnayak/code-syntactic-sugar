@@ -279,6 +279,11 @@ export function tokenize(code: string): Token[] {
         }
         // `=` in property=<value>
         if (next === "=" && !inStringContent()) {
+          // if current is not a space, ensure `prop` is a property
+          if (isSpaces(current)) {
+            append(T_SPACE, current);
+            current = "";
+          }
           const prop = current ? current + curr : curr;
           if (isIdentifier(prop)) {
             current = prop;
