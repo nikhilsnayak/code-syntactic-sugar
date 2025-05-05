@@ -1,6 +1,6 @@
 {
   "name": "code-syntactic-sugar",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0",
   "description": "A fork of sugar-high package with extra features for use with React.",
   "keywords": [
     "syntax-highlighting",
@@ -39,14 +39,14 @@
     "prepublishOnly": "pnpm run ci"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.3",
-    "@changesets/cli": "^2.27.8",
-    "@types/react": "^18.3.5",
-    "react": "^18.3.1",
-    "tsup": "^8.2.4",
-    "turbo": "^2.1.2",
-    "typescript": "^5",
-    "vitest": "^2"
+    "@biomejs/biome": "^1.9.4",
+    "@changesets/cli": "^2.29.2",
+    "@types/react": "^19.1.2",
+    "react": "^19.1.0",
+    "tsup": "^8.4.0",
+    "turbo": "^2.5.2",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.2"
   },
   "peerDependencies": {
     "react": "^18 || ^19"
@@ -54,5 +54,5 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "pnpm@9.10.0"
+  "packageManager": "pnpm@10.10.0"
 }
