@@ -1,5 +1,11 @@
 # code-syntactic-sugar
 
+## 2.0.0-beta.3
+
+### Patch Changes
+
+- d8852d5: fix unwanted newline and sync from sugar high
+
 ## 2.0.0-beta.2
 
 ### Patch Changes
