@@ -1,5 +1,20 @@
 # code-syntactic-sugar
 
+## 2.0.0
+
+### Major Changes
+
+- a25306e: Version to react element output mode
+
+  ssssssssssssssssssssssssssssssssssssssssss
+
+- 030c196: v2 stable
+
+### Patch Changes
+
+- 195fd27: add turbo and fix types
+- d8852d5: fix unwanted newline and sync from sugar high
+
 ## 2.0.0-beta.3
 
 ### Patch Changes
